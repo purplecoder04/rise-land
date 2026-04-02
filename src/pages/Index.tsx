@@ -1,6 +1,35 @@
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import { Sparkles, BookOpen, Heart, Shield, Leaf, Mountain } from "lucide-react";
+
+const RiseCard = ({ icon: Icon, label, delay }: { icon: any; label: string; delay: number }) => (
+  <motion.button
+    initial={{ opacity: 0, y: 10 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.6, delay }}
+    className="w-full flex items-center gap-2.5 px-3 py-2.5 rounded-xl bg-rise-muted/40 border border-rise-muted/60 text-left transition-all active:scale-[0.97]"
+  >
+    <div className="w-7 h-7 rounded-lg bg-rise/10 flex items-center justify-center shrink-0">
+      <Icon className="w-3.5 h-3.5 text-rise" />
+    </div>
+    <span className="font-body text-[11px] font-medium text-rise-deep/70">{label}</span>
+  </motion.button>
+);
+
+const LandCard = ({ icon: Icon, label, delay }: { icon: any; label: string; delay: number }) => (
+  <motion.button
+    initial={{ opacity: 0, y: 10 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.6, delay }}
+    className="w-full flex items-center gap-2.5 px-3 py-2.5 rounded-xl bg-land-muted/40 border border-land-muted/60 text-left transition-all active:scale-[0.97]"
+  >
+    <div className="w-7 h-7 rounded-lg bg-land/10 flex items-center justify-center shrink-0">
+      <Icon className="w-3.5 h-3.5 text-land" />
+    </div>
+    <span className="font-body text-[11px] font-medium text-land-deep/70">{label}</span>
+  </motion.button>
+);
 
 const Index = () => {
   const navigate = useNavigate();
@@ -26,9 +55,10 @@ const Index = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1.2 }}
-          className="flex-1 flex flex-col items-center justify-start px-3 md:px-8 pt-20 pb-16 bg-rise-bg relative"
+          className="flex-1 flex flex-col items-center justify-between px-3 md:px-8 pt-16 pb-8 bg-rise-bg relative"
         >
-          <div className="max-w-[150px] md:max-w-xs text-center space-y-4 md:space-y-6">
+          {/* Top content */}
+          <div className="max-w-[150px] md:max-w-xs text-center space-y-3 md:space-y-6 mt-4">
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -47,16 +77,6 @@ const Index = () => {
               <br />
               inner work.
             </motion.p>
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.85 }}
-              className="font-body text-[11px] md:text-sm font-light text-rise-deep/50 leading-snug"
-            >
-              Healing, soft,
-              <br />
-              warm, restorative.
-            </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
@@ -66,11 +86,18 @@ const Index = () => {
                 variant="rise"
                 size="default"
                 onClick={() => navigate("/rise")}
-                className="mt-1 text-xs md:text-sm px-4 md:px-6 py-2 md:py-3"
+                className="text-xs md:text-sm px-4 md:px-6 py-2 md:py-3"
               >
                 Enter Rise
               </Button>
             </motion.div>
+          </div>
+
+          {/* Bottom preview cards */}
+          <div className="w-full max-w-[150px] space-y-2">
+            <RiseCard icon={Sparkles} label="Daily Prompt" delay={1.1} />
+            <RiseCard icon={Heart} label="Mood Check-In" delay={1.2} />
+            <RiseCard icon={BookOpen} label="Journal" delay={1.3} />
           </div>
         </motion.div>
 
@@ -87,9 +114,10 @@ const Index = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1.2 }}
-          className="flex-1 flex flex-col items-center justify-start px-3 md:px-8 pt-20 pb-16 bg-land-bg relative"
+          className="flex-1 flex flex-col items-center justify-between px-3 md:px-8 pt-16 pb-8 bg-land-bg relative"
         >
-          <div className="max-w-[150px] md:max-w-xs text-center space-y-4 md:space-y-6">
+          {/* Top content */}
+          <div className="max-w-[150px] md:max-w-xs text-center space-y-3 md:space-y-6 mt-4">
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -108,16 +136,6 @@ const Index = () => {
               <br />
               inner work.
             </motion.p>
-            <motion.p
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.8, delay: 0.95 }}
-              className="font-body text-[11px] md:text-sm font-light text-land-deep/50 leading-snug"
-            >
-              Grounded, calm,
-              <br />
-              secure, steady.
-            </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
@@ -127,11 +145,18 @@ const Index = () => {
                 variant="land"
                 size="default"
                 onClick={() => navigate("/land")}
-                className="mt-1 text-xs md:text-sm px-4 md:px-6 py-2 md:py-3"
+                className="text-xs md:text-sm px-4 md:px-6 py-2 md:py-3"
               >
                 Enter Land
               </Button>
             </motion.div>
+          </div>
+
+          {/* Bottom preview cards */}
+          <div className="w-full max-w-[150px] space-y-2">
+            <LandCard icon={Sparkles} label="Daily Prompt" delay={1.15} />
+            <LandCard icon={Shield} label="Trust Reflection" delay={1.25} />
+            <LandCard icon={Mountain} label="Grounding" delay={1.35} />
           </div>
         </motion.div>
       </div>
