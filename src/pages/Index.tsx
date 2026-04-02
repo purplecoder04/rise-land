@@ -26,7 +26,7 @@ const Index = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1.2 }}
-          className="flex-1 flex flex-col items-center justify-center px-3 md:px-8 py-16 bg-rise-bg relative"
+          className="flex-1 flex flex-col items-center justify-start px-3 md:px-8 pt-20 pb-16 bg-rise-bg relative"
         >
           <div className="max-w-[140px] md:max-w-xs text-center space-y-3 md:space-y-6">
             <motion.h2
