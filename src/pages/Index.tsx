@@ -87,14 +87,14 @@ const Index = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1.2 }}
-          className="flex-1 flex flex-col items-center justify-center px-3 md:px-8 py-16 bg-land-bg relative"
+          className="flex-1 flex flex-col items-center justify-start px-3 md:px-8 pt-20 pb-16 bg-land-bg relative"
         >
-          <div className="max-w-[140px] md:max-w-xs text-center space-y-3 md:space-y-6">
+          <div className="max-w-[150px] md:max-w-xs text-center space-y-4 md:space-y-6">
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
-              className="font-display text-3xl md:text-6xl font-light text-land-deep tracking-wide"
+              className="font-display text-4xl md:text-6xl font-light text-land-deep tracking-wide"
             >
               Land
             </motion.h2>
@@ -102,15 +102,21 @@ const Index = () => {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.8 }}
-              className="font-body text-xs md:text-base font-light leading-relaxed text-land-deep/70"
+              className="font-body text-[13px] md:text-base font-light leading-relaxed text-land-deep/80"
             >
               His individual
               <br />
               inner work.
+            </motion.p>
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.95 }}
+              className="font-body text-[11px] md:text-sm font-light text-land-deep/50 leading-snug"
+            >
+              Grounded, calm,
               <br />
-              <span className="text-[10px] md:text-sm opacity-70">
-                Grounded, calm, steady.
-              </span>
+              secure, steady.
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 12 }}
