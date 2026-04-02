@@ -28,12 +28,12 @@ const Index = () => {
           transition={{ duration: 1.2 }}
           className="flex-1 flex flex-col items-center justify-start px-3 md:px-8 pt-20 pb-16 bg-rise-bg relative"
         >
-          <div className="max-w-[140px] md:max-w-xs text-center space-y-3 md:space-y-6">
+          <div className="max-w-[150px] md:max-w-xs text-center space-y-4 md:space-y-6">
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
-              className="font-display text-3xl md:text-6xl font-light text-rise-deep tracking-wide"
+              className="font-display text-4xl md:text-6xl font-light text-rise-deep tracking-wide"
             >
               Rise
             </motion.h2>
@@ -41,15 +41,21 @@ const Index = () => {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.7 }}
-              className="font-body text-xs md:text-base font-light leading-relaxed text-rise-deep/70"
+              className="font-body text-[13px] md:text-base font-light leading-relaxed text-rise-deep/80"
             >
               Her individual
               <br />
               inner work.
+            </motion.p>
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.8, delay: 0.85 }}
+              className="font-body text-[11px] md:text-sm font-light text-rise-deep/50 leading-snug"
+            >
+              Healing, soft,
               <br />
-              <span className="text-[10px] md:text-sm opacity-70">
-                Healing, soft, warm.
-              </span>
+              warm, restorative.
             </motion.p>
             <motion.div
               initial={{ opacity: 0, y: 12 }}
