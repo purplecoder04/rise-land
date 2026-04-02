@@ -23,8 +23,8 @@ const SectionLayout = ({ section, title, children }: SectionLayoutProps) => {
 
   const bgClass = section === "rise" ? "bg-rise-bg" : "bg-land-bg";
   const textClass = section === "rise" ? "text-rise-deep" : "text-land-deep";
-  const activeClass = section === "rise" ? "text-rise" : "text-land";
-  const mutedClass = section === "rise" ? "text-rise-deep/40" : "text-land-deep/40";
+  const activeClass = section === "rise" ? "text-rise-deep" : "text-land-deep";
+  const mutedClass = section === "rise" ? "text-rise-deep/45" : "text-land-deep/45";
   const borderClass = section === "rise" ? "border-rise-muted" : "border-land-muted";
 
   return (
