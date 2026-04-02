@@ -8,7 +8,7 @@ const Index = () => {
   return (
     <div className="h-screen flex flex-col overflow-hidden">
       {/* Header */}
-      <header className="absolute top-0 left-0 right-0 z-10 flex items-center justify-center py-4">
+      <header className="absolute top-0 left-0 right-0 z-10 flex items-center justify-center py-3">
         <motion.h1
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
