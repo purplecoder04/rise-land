@@ -1,7 +1,8 @@
 import { ReactNode } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Home, Sparkles, BookOpen, TrendingUp, User } from "lucide-react";
+import { Home, Sparkles, BookOpen, TrendingUp, User, LogOut } from "lucide-react";
+import { useAuth } from "@/hooks/use-auth";
 
 interface SectionLayoutProps {
   section: "rise" | "land";
@@ -19,13 +20,20 @@ const navItems = [
 const SectionLayout = ({ section, title, children }: SectionLayoutProps) => {
   const navigate = useNavigate();
   const location = useLocation();
+  const { signOut } = useAuth();
   const basePath = `/${section}`;
 
   const bgClass = section === "rise" ? "bg-rise-bg" : "bg-land-bg";
   const textClass = section === "rise" ? "text-rise-deep" : "text-land-deep";
   const activeClass = section === "rise" ? "text-rise-deep" : "text-land-deep";
   const mutedClass = section === "rise" ? "text-rise-deep/45" : "text-land-deep/45";
+  const hoverTextClass = section === "rise" ? "hover:text-rise-deep" : "hover:text-land-deep";
   const borderClass = section === "rise" ? "border-rise-muted" : "border-land-muted";
+
+  const handleLogout = async () => {
+    await signOut();
+    navigate("/auth", { replace: true });
+  };
 
   return (
     <div className={`min-h-screen flex flex-col ${bgClass}`}>
@@ -33,14 +41,21 @@ const SectionLayout = ({ section, title, children }: SectionLayoutProps) => {
       <header className={`flex items-center justify-between px-6 py-4 border-b ${borderClass}`}>
         <button
           onClick={() => navigate("/")}
-          className={`${mutedClass} hover:${textClass} transition-colors`}
+          className={`${mutedClass} ${hoverTextClass} transition-colors`}
         >
           <Home className="w-5 h-5" />
         </button>
         <h1 className={`font-display text-xl font-light tracking-wide ${textClass}`}>
           {title}
         </h1>
-        <div className="w-5" />
+        <button
+          onClick={handleLogout}
+          className={`${mutedClass} ${hoverTextClass} transition-colors`}
+          aria-label="Log out"
+          title="Log out"
+        >
+          <LogOut className="w-5 h-5" />
+        </button>
       </header>
 
       {/* Content */}

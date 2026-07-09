@@ -3,17 +3,12 @@ import SectionLayout from "@/components/SectionLayout";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 import { BookOpen } from "lucide-react";
-
-const prompts = [
-  "What responsibility have you been avoiding, and why?",
-  "What does being 'strong' cost you emotionally?",
-  "When was the last time you let yourself be fully honest?",
-];
+import { getPromptForDate } from "@/lib/journalPrompts";
 
 const LandPrompt = () => {
   const navigate = useNavigate();
   const today = new Date();
-  const promptIndex = today.getDate() % prompts.length;
+  const promptText = getPromptForDate("Land", today);
 
   return (
     <SectionLayout section="land" title="Land">
@@ -34,7 +29,7 @@ const LandPrompt = () => {
           className="rounded-2xl bg-land-muted/30 border border-land-muted/50 px-5 py-8"
         >
           <blockquote className="font-display text-xl font-light leading-relaxed text-land-deep text-center italic">
-            "{prompts[promptIndex]}"
+            "{promptText}"
           </blockquote>
         </motion.div>
 

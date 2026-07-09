@@ -1,9 +1,16 @@
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Sparkles, BookOpen, Heart, Shield, Leaf, Mountain } from "lucide-react";
+import { Sparkles, BookOpen, Heart, Shield, Mountain, LogOut, type LucideIcon } from "lucide-react";
+import { useAuth } from "@/hooks/use-auth";
 
-const RiseCard = ({ icon: Icon, label, delay }: { icon: any; label: string; delay: number }) => (
+interface PathCardProps {
+  icon: LucideIcon;
+  label: string;
+  delay: number;
+}
+
+const RiseCard = ({ icon: Icon, label, delay }: PathCardProps) => (
   <motion.button
     initial={{ opacity: 0, y: 10 }}
     animate={{ opacity: 1, y: 0 }}
@@ -17,7 +24,7 @@ const RiseCard = ({ icon: Icon, label, delay }: { icon: any; label: string; dela
   </motion.button>
 );
 
-const LandCard = ({ icon: Icon, label, delay }: { icon: any; label: string; delay: number }) => (
+const LandCard = ({ icon: Icon, label, delay }: PathCardProps) => (
   <motion.button
     initial={{ opacity: 0, y: 10 }}
     animate={{ opacity: 1, y: 0 }}
@@ -33,6 +40,12 @@ const LandCard = ({ icon: Icon, label, delay }: { icon: any; label: string; dela
 
 const Index = () => {
   const navigate = useNavigate();
+  const { signOut } = useAuth();
+
+  const handleLogout = async () => {
+    await signOut();
+    navigate("/auth", { replace: true });
+  };
 
   return (
     <div className="h-screen flex flex-col overflow-hidden">
@@ -46,6 +59,15 @@ const Index = () => {
         >
           Rise <span className="font-light opacity-40">&</span> Land
         </motion.h1>
+        <button
+          type="button"
+          onClick={handleLogout}
+          className="absolute right-4 top-3 text-foreground/35 transition-colors hover:text-foreground/70"
+          aria-label="Log out"
+          title="Log out"
+        >
+          <LogOut className="w-5 h-5" />
+        </button>
       </header>
 
       {/* Split Screen - always side by side */}
